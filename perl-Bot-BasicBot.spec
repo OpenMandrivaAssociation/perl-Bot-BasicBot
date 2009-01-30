@@ -1,8 +1,8 @@
 %define module	Bot-BasicBot
 %define name	perl-%{module}
 %define ver	0.7
-%define version 0.70
-%define	release	%mkrel 6
+%define version 0.81
+%define	release	%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
