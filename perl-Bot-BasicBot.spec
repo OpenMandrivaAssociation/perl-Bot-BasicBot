@@ -1,49 +1,49 @@
-%define module	Bot-BasicBot
-%define name	perl-%{module}
-%define ver	0.7
-%define version 0.81
-%define	release	%mkrel 1
+%define upstream_name	 Bot-BasicBot
+%define upstream_version 0.81
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	%mkrel 1
+
 Summary:	A simple IRC bot base class
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Source0:	http://search.cpan.org/CPAN/authors/id/T/TO/TOMI/%{module}-%{ver}.tar.bz2
-Url:		http://search.cpan.org/dist/%{module}
-BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	perl-devel
-BuildRequires:  perl-Module-Build
-BuildRequires:  perl-POE-Component-IRC
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://search.cpan.org/CPAN/authors/id/T/TO/TOMI/%{upstream_name}-%{upstream_version}.tar.gz
+
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(POE::Component::IRC)
+BuildArch: noarch
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
+
 %description
 A basic bot system written in Perl, designed to make it easy to do simple bots,
 optionally forking longer processes (like searches) concurrently in the
 background.
 
 %prep
-%setup -q -n %{module}-%{ver}
+%setup -q -n %{upstream_name}-%{upstream_version}
+# some backup files leaked, removing them
+find . -name "._*" | xargs rm
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build
+%{__perl} Makefile.PL INSTALLDIRS=vendor
+%make
 
 %check
-./Build test
+# tests try to connect to internet
+#%make test
 
 %install
-rm -rf $RPM_BUILD_ROOT
-./Build install destdir=$RPM_BUILD_ROOT
+rm -rf %{buildroot}
+%{makeinstall_std}
 
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc Changes README examples
+%doc Changes examples
 %{perl_vendorlib}/Bot/*
 %{_mandir}/*/*
-
-
 
