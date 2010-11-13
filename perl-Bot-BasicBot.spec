@@ -1,5 +1,5 @@
 %define upstream_name	 Bot-BasicBot
-%define upstream_version 0.81
+%define upstream_version 0.83
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
@@ -24,7 +24,7 @@ background.
 %prep
 %setup -q -n %{upstream_name}-%{upstream_version}
 # some backup files leaked, removing them
-find . -name "._*" | xargs rm
+#find . -name "._*" | xargs rm
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
