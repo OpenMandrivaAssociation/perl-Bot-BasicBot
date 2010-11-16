@@ -1,5 +1,5 @@
 %define upstream_name	 Bot-BasicBot
-%define upstream_version 0.83
+%define upstream_version 0.84
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
