@@ -8,7 +8,7 @@ Release:	1
 Summary:	A simple IRC bot base class
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://metacpan.org/release/Bot-BasicBot
+Url:		https://github.com/bigpresh/bot-basicbot
 Source0:	https://cpan.metacpan.org/authors/id/B/BI/BIGPRESH/Bot-BasicBot-%{upstream_version}.tar.gz
 
 BuildRequires:	make
