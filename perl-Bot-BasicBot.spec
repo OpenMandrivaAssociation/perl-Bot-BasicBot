@@ -1,15 +1,13 @@
 %define upstream_name	 Bot-BasicBot
-%define upstream_version 0.93
-
 Name:		perl-%{upstream_name}
-Version:	%{upstream_version}
-Release:	1
+Version:	0.93
+Release:	2
 
 Summary:	A simple IRC bot base class
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		https://github.com/bigpresh/bot-basicbot
-Source0:	https://cpan.metacpan.org/authors/id/B/BI/BIGPRESH/Bot-BasicBot-%{upstream_version}.tar.gz
+Source0:	https://cpan.metacpan.org/authors/id/B/BI/BIGPRESH/Bot-BasicBot-%{version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -23,7 +21,7 @@ optionally forking longer processes (like searches) concurrently in the
 background.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 # some backup files leaked, removing them
 #find . -name "._*" | xargs rm
 
@@ -63,8 +61,7 @@ perl Makefile.PL INSTALLDIRS=vendor
 * Tue Jul 07 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 0.810.0-1mdv2011.0
 + Revision: 393093
 - update to 0.81
-- using %%perl_convert_version
-- sanitizing spec file
+- using %0.93 sanitizing spec file
 
 * Fri Jan 30 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.81-1mdv2009.1
 + Revision: 335552
